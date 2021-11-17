@@ -31,7 +31,7 @@ namespace SMTV_SaveUtil_GUI
                 textBox1.Text = opf.FileName.ToString();
                 button1.Enabled = true;
                 button2.Enabled = true;
-                openFileToolStripMenuItem.Enabled = true;
+                selectOutputToolStripMenuItem.Enabled = true;
             }
 
            
@@ -62,7 +62,7 @@ namespace SMTV_SaveUtil_GUI
 
                 Process.Start("cmd.exe", test);
 
-                MessageBox.Show("Success", "Success");
+                MessageBox.Show("Task Finished. Please check output file", "Success");
             }
             catch
             {
@@ -78,23 +78,9 @@ namespace SMTV_SaveUtil_GUI
             {
                 string test = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o " + textBox2.Text;
 
+                Process.Start("cmd.exe", test);
 
-                Process process = new System.Diagnostics.Process();
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                startInfo.FileName = "cmd.exe";
-                startInfo.Arguments = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o " + textBox2.Text;
-                process.StartInfo = startInfo;
-                process.Start();
-                
-
-                //Process.Start("cmd.exe", test);
-                if (process.HasExited)
-                {
-                    
-                    MessageBox.Show("Success", "Success");
-                }
-               
+                MessageBox.Show("Task Finished. Please check output file", "Success");
             }
             catch
             {
