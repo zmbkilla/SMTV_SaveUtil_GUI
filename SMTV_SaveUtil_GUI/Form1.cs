@@ -54,20 +54,53 @@ namespace SMTV_SaveUtil_GUI
             //Console.WriteLine(pro.StandardOutput.ReadToEnd());
 
 
+            try
+            {
+                string strCmdText;
+                strCmdText = "/C " + Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
+                string test = "/C smtv.saveutil.exe -i " + textBox1.Text;
 
-            string strCmdText;
-            strCmdText = "/C " + Environment.CurrentDirectory +"\\req\\smtv.saveutil.exe -i " + textBox1.Text;
-            string test = "/C smtv.saveutil.exe -i " + textBox1.Text;
-            
-            Process.Start("cmd.exe", test);
+                Process.Start("cmd.exe", test);
+
+                MessageBox.Show("Success", "Success");
+            }
+            catch
+            {
+                MessageBox.Show("Error. Check your Input Path value", "Error");
+            }
+           
             
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string test = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o "+textBox2.Text;
+            try
+            {
+                string test = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o " + textBox2.Text;
 
-            Process.Start("cmd.exe", test);
+
+                Process process = new System.Diagnostics.Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o " + textBox2.Text;
+                process.StartInfo = startInfo;
+                process.Start();
+                
+
+                //Process.Start("cmd.exe", test);
+                if (process.HasExited)
+                {
+                    
+                    MessageBox.Show("Success", "Success");
+                }
+               
+            }
+            catch
+            {
+                MessageBox.Show("Error. Check your Input Path value", "Error");
+            }
+            
         }
 
         private void selectOutputToolStripMenuItem_Click(object sender, EventArgs e)
