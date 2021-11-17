@@ -86,9 +86,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="smtv.saveutil.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Untitled.ico" />
   </ItemGroup>
   <ItemGroup>
