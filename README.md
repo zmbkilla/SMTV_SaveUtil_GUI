@@ -11,3 +11,9 @@ from here
 https://github.com/zarroboogs/smtv.saveutil
 
 After that, program should be ready to run
+
+#Issues
+
+Program does not show errors so it will still show the success message.
+changed message to notify users check files to see if encryption/decryption succeeded
+
