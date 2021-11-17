@@ -28,7 +28,7 @@ namespace SMTV_SaveUtil_GUI
             if (opf.ShowDialog() == DialogResult.OK)
             {
                 file_dir = opf.FileName.ToString();
-                textBox1.Text = opf.FileName.ToString();
+                textBox1.Text = opf.FileName;
                 button1.Enabled = true;
                 button2.Enabled = true;
                 selectOutputToolStripMenuItem.Enabled = true;
@@ -56,9 +56,10 @@ namespace SMTV_SaveUtil_GUI
 
             try
             {
+                string @addr = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
                 string strCmdText;
-                strCmdText = "/C " + Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
-                string test = "/C smtv.saveutil.exe -i " + textBox1.Text;
+                strCmdText = "/C " + "@"+ Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
+                string @test = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
 
                 Process.Start("cmd.exe", test);
 
@@ -76,7 +77,7 @@ namespace SMTV_SaveUtil_GUI
         {
             try
             {
-                string test = "/C smtv.saveutil.exe -i " + textBox1.Text + " -o " + textBox2.Text;
+                string test = @"/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
 
                 Process.Start("cmd.exe", test);
 
