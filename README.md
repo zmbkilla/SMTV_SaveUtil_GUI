@@ -17,3 +17,11 @@ After that, program should be ready to run
 Program does not show errors so it will still show the success message.
 changed message to notify users check files to see if encryption/decryption succeeded
 
+if problems persist, use the alter executable to get cmd output message
+
+# requirements
+
+.net 5.0
+
+https://dotnet.microsoft.com/download/dotnet/5.0
+Microsoft
