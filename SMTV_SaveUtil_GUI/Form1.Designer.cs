@@ -33,11 +33,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.selectOutputeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.selectOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.additionalOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDLCStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopPlayMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,19 +62,28 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectOutputeToolStripMenuItem,
-            this.selectOutputToolStripMenuItem});
+            this.selectOutputToolStripMenuItem,
+            this.additionalOptionsToolStripMenuItem,
+            this.stopPlayMusicToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(443, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // openFileToolStripMenuItem
+            // selectOutputeToolStripMenuItem
             // 
-            this.selectOutputeToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.selectOutputeToolStripMenuItem.Name = "selectOutputeToolStripMenuItem";
             this.selectOutputeToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.selectOutputeToolStripMenuItem.Text = "Open File";
             this.selectOutputeToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // selectOutputToolStripMenuItem
+            // 
+            this.selectOutputToolStripMenuItem.Name = "selectOutputToolStripMenuItem";
+            this.selectOutputToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.selectOutputToolStripMenuItem.Text = "Select Output";
+            this.selectOutputToolStripMenuItem.Click += new System.EventHandler(this.selectOutputToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -93,13 +105,6 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // selectOutputToolStripMenuItem
-            // 
-            this.selectOutputToolStripMenuItem.Name = "selectOutputToolStripMenuItem";
-            this.selectOutputToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.selectOutputToolStripMenuItem.Text = "Select Output";
-            this.selectOutputToolStripMenuItem.Click += new System.EventHandler(this.selectOutputToolStripMenuItem_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -117,6 +122,28 @@
             this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Output path";
+            // 
+            // additionalOptionsToolStripMenuItem
+            // 
+            this.additionalOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setDLCStatusToolStripMenuItem});
+            this.additionalOptionsToolStripMenuItem.Name = "additionalOptionsToolStripMenuItem";
+            this.additionalOptionsToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.additionalOptionsToolStripMenuItem.Text = "Additional Options";
+            // 
+            // setDLCStatusToolStripMenuItem
+            // 
+            this.setDLCStatusToolStripMenuItem.Name = "setDLCStatusToolStripMenuItem";
+            this.setDLCStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setDLCStatusToolStripMenuItem.Text = "Set DLC status";
+            this.setDLCStatusToolStripMenuItem.Click += new System.EventHandler(this.setDLCStatusToolStripMenuItem_Click);
+            // 
+            // stopPlayMusicToolStripMenuItem
+            // 
+            this.stopPlayMusicToolStripMenuItem.Name = "stopPlayMusicToolStripMenuItem";
+            this.stopPlayMusicToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.stopPlayMusicToolStripMenuItem.Text = "Stop/Play Music";
+            this.stopPlayMusicToolStripMenuItem.Click += new System.EventHandler(this.stopPlayMusicToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -153,6 +180,9 @@
         private System.Windows.Forms.ToolStripMenuItem selectOutputToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem additionalOptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setDLCStatusToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopPlayMusicToolStripMenuItem;
     }
 }
 

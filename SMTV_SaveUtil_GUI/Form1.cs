@@ -8,12 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
+using System.Media;
 
 namespace SMTV_SaveUtil_GUI
 {
     public partial class Form1 : Form
     {
         public string file_dir;
+        public bool dlcoff, dlcon;
+        public bool musicp = true;
+        public Stream strm = Properties.Resources._28_Evolution_Majin_Tensei_II_Spiral_Nemesis;
+        public SoundPlayer sp;
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +38,7 @@ namespace SMTV_SaveUtil_GUI
                 button1.Enabled = true;
                 button2.Enabled = true;
                 selectOutputToolStripMenuItem.Enabled = true;
+                additionalOptionsToolStripMenuItem.Enabled = true;
             }
 
            
@@ -61,11 +68,43 @@ namespace SMTV_SaveUtil_GUI
                 strCmdText = "/C " + "@"+ Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
                 string @test = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
 
+
+                if(dlcoff == true)
+                {
+                    decimal DLCS = 0;
+                    byte[] bDLCS = BitConverter.GetBytes(Convert.ToInt32(DLCS));
+
+                    string @adr = textBox1.Text;
+
+                    BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(adr));
+
+                    BWriter.BaseStream.Position = 0x45d;
+                    BWriter.Write(bDLCS);
+
+                    BWriter.Close();
+                    dlcoff = false;
+                }
+
+                if (dlcon == true)
+                {
+                    decimal DLCS = 255;
+                    byte[] bDLCS = BitConverter.GetBytes(Convert.ToInt32(DLCS));
+
+                    string @adr = textBox1.Text;
+                    BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(adr));
+
+                    BWriter.BaseStream.Position = 0x45d;
+                    BWriter.Write(bDLCS);
+
+                    BWriter.Close();
+                    dlcon = false;
+                }
+
                 Process.Start("cmd.exe", test);
 
                 MessageBox.Show("Task Finished. Please check output file", "Success");
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Error. Check your Input Path value", "Error");
             }
@@ -75,9 +114,47 @@ namespace SMTV_SaveUtil_GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+
+
+
+
             try
             {
                 string test = @"/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
+
+
+                if (dlcoff == true)
+                {
+                    decimal DLCS = 0;
+                    byte[] bDLCS = BitConverter.GetBytes(Convert.ToInt32(DLCS));
+
+                    string @adr = textBox1.Text;
+
+                    BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(adr));
+
+                    BWriter.BaseStream.Position = 0x45d;
+                    BWriter.Write(bDLCS);
+
+                    BWriter.Close();
+                    dlcoff = false;
+                }
+
+                if (dlcon == true)
+                {
+                    decimal DLCS = 255;
+                    byte[] bDLCS = BitConverter.GetBytes(Convert.ToInt32(DLCS));
+
+                    string @adr = textBox1.Text;
+                    BinaryWriter BWriter = new BinaryWriter(File.OpenWrite(adr));
+
+                    BWriter.BaseStream.Position = 0x45d;
+                    BWriter.Write(bDLCS);
+
+                    BWriter.Close();
+                    dlcon = false;
+                }
+
 
                 Process.Start("cmd.exe", test);
 
@@ -102,10 +179,46 @@ namespace SMTV_SaveUtil_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            sp = new SoundPlayer(strm);
+            
+            sp.PlayLooping();
+
+
             button1.Enabled = false;
             button2.Enabled = false;
             selectOutputToolStripMenuItem.Enabled = false;
+            additionalOptionsToolStripMenuItem.Enabled = false;
 
+        }
+
+        private void stopPlayMusicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (musicp == true)
+            {
+                sp.Stop();
+                musicp = false;
+            } else if (musicp == false){
+                sp.PlayLooping();
+                musicp = true;
+            }
+        }
+
+        private void setDLCStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to set DLC status. YES = off, No = on (Input file must be Decrypted save)", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
+            {
+                dlcoff = true;
+                
+            }
+            else if (result == DialogResult.No)
+            {
+                dlcon = true;
+            }
+            else
+            {
+                //...
+            }
         }
     }
 }
