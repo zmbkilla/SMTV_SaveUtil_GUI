@@ -34,13 +34,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.selectOutputeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectOutputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.additionalOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setDLCStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopPlayMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.additionalOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setDLCStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopPlayMusicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectSaveUtilEXEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,14 +49,14 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(36, 63);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(384, 20);
+            this.textBox1.Size = new System.Drawing.Size(476, 20);
             this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(36, 139);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(384, 20);
+            this.textBox2.Size = new System.Drawing.Size(476, 20);
             this.textBox2.TabIndex = 1;
             // 
             // menuStrip1
@@ -64,12 +65,14 @@
             this.selectOutputeToolStripMenuItem,
             this.selectOutputToolStripMenuItem,
             this.additionalOptionsToolStripMenuItem,
-            this.stopPlayMusicToolStripMenuItem});
+            this.stopPlayMusicToolStripMenuItem,
+            this.selectSaveUtilEXEToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(443, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(548, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // selectOutputeToolStripMenuItem
             // 
@@ -85,9 +88,31 @@
             this.selectOutputToolStripMenuItem.Text = "Select Output";
             this.selectOutputToolStripMenuItem.Click += new System.EventHandler(this.selectOutputToolStripMenuItem_Click);
             // 
+            // additionalOptionsToolStripMenuItem
+            // 
+            this.additionalOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setDLCStatusToolStripMenuItem});
+            this.additionalOptionsToolStripMenuItem.Name = "additionalOptionsToolStripMenuItem";
+            this.additionalOptionsToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
+            this.additionalOptionsToolStripMenuItem.Text = "Additional Options";
+            // 
+            // setDLCStatusToolStripMenuItem
+            // 
+            this.setDLCStatusToolStripMenuItem.Name = "setDLCStatusToolStripMenuItem";
+            this.setDLCStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setDLCStatusToolStripMenuItem.Text = "Set DLC status";
+            this.setDLCStatusToolStripMenuItem.Click += new System.EventHandler(this.setDLCStatusToolStripMenuItem_Click);
+            // 
+            // stopPlayMusicToolStripMenuItem
+            // 
+            this.stopPlayMusicToolStripMenuItem.Name = "stopPlayMusicToolStripMenuItem";
+            this.stopPlayMusicToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
+            this.stopPlayMusicToolStripMenuItem.Text = "Stop/Play Music";
+            this.stopPlayMusicToolStripMenuItem.Click += new System.EventHandler(this.stopPlayMusicToolStripMenuItem_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 229);
+            this.button1.Location = new System.Drawing.Point(36, 229);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 23);
             this.button1.TabIndex = 3;
@@ -97,7 +122,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(244, 229);
+            this.button2.Location = new System.Drawing.Point(360, 229);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(152, 23);
             this.button2.TabIndex = 4;
@@ -123,33 +148,18 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Output path";
             // 
-            // additionalOptionsToolStripMenuItem
+            // selectSaveUtilEXEToolStripMenuItem
             // 
-            this.additionalOptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.setDLCStatusToolStripMenuItem});
-            this.additionalOptionsToolStripMenuItem.Name = "additionalOptionsToolStripMenuItem";
-            this.additionalOptionsToolStripMenuItem.Size = new System.Drawing.Size(119, 20);
-            this.additionalOptionsToolStripMenuItem.Text = "Additional Options";
-            // 
-            // setDLCStatusToolStripMenuItem
-            // 
-            this.setDLCStatusToolStripMenuItem.Name = "setDLCStatusToolStripMenuItem";
-            this.setDLCStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.setDLCStatusToolStripMenuItem.Text = "Set DLC status";
-            this.setDLCStatusToolStripMenuItem.Click += new System.EventHandler(this.setDLCStatusToolStripMenuItem_Click);
-            // 
-            // stopPlayMusicToolStripMenuItem
-            // 
-            this.stopPlayMusicToolStripMenuItem.Name = "stopPlayMusicToolStripMenuItem";
-            this.stopPlayMusicToolStripMenuItem.Size = new System.Drawing.Size(105, 20);
-            this.stopPlayMusicToolStripMenuItem.Text = "Stop/Play Music";
-            this.stopPlayMusicToolStripMenuItem.Click += new System.EventHandler(this.stopPlayMusicToolStripMenuItem_Click);
+            this.selectSaveUtilEXEToolStripMenuItem.Name = "selectSaveUtilEXEToolStripMenuItem";
+            this.selectSaveUtilEXEToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
+            this.selectSaveUtilEXEToolStripMenuItem.Text = "Select SaveUtil.EXE";
+            this.selectSaveUtilEXEToolStripMenuItem.Click += new System.EventHandler(this.selectSaveUtilEXEToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 292);
+            this.ClientSize = new System.Drawing.Size(548, 292);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -183,6 +193,7 @@
         private System.Windows.Forms.ToolStripMenuItem additionalOptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setDLCStatusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem stopPlayMusicToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectSaveUtilEXEToolStripMenuItem;
     }
 }
 

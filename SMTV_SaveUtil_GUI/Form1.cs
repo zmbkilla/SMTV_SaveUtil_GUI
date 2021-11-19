@@ -16,6 +16,7 @@ namespace SMTV_SaveUtil_GUI
     public partial class Form1 : Form
     {
         public string file_dir;
+        public string exe_dir;
         public bool dlcoff, dlcon;
         public bool musicp = true;
         public Stream strm = Properties.Resources._28_Evolution_Majin_Tensei_II_Spiral_Nemesis;
@@ -66,7 +67,7 @@ namespace SMTV_SaveUtil_GUI
                 string @addr = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
                 string strCmdText;
                 strCmdText = "/C " + "@"+ Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
-                string @test = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
+                string @test = @"/K " + @"""" + exe_dir + " -i " + @""""+textBox1.Text+"\"";
 
 
                 if(dlcoff == true)
@@ -121,7 +122,7 @@ namespace SMTV_SaveUtil_GUI
 
             try
             {
-                string test = @"/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
+                string test = @"/C "+ @""""+exe_dir+" -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
 
 
                 if (dlcoff == true)
@@ -200,6 +201,21 @@ namespace SMTV_SaveUtil_GUI
             } else if (musicp == false){
                 sp.PlayLooping();
                 musicp = true;
+            }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void selectSaveUtilEXEToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opd = new OpenFileDialog();
+
+            if(opd.ShowDialog() == DialogResult.OK)
+            {
+                exe_dir = opd.FileName.ToString();
             }
         }
 
