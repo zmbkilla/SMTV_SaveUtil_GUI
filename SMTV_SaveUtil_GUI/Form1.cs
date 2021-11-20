@@ -21,6 +21,7 @@ namespace SMTV_SaveUtil_GUI
         public bool musicp = true;
         public Stream strm = Properties.Resources._28_Evolution_Majin_Tensei_II_Spiral_Nemesis;
         public SoundPlayer sp;
+        public OpenFileDialog opdexe = new OpenFileDialog();
         public Form1()
         {
             InitializeComponent();
@@ -67,7 +68,17 @@ namespace SMTV_SaveUtil_GUI
                 string @addr = "/C smtv.saveutil.exe -i " + @""""+textBox1.Text+"\"";
                 string strCmdText;
                 strCmdText = "/C " + "@"+ Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
-                string @test = @"/K " + @"""" + exe_dir + " -i " + @""""+textBox1.Text+"\"";
+
+
+                if (exe_dir.Contains(opdexe.SafeFileName))
+                {
+                    
+
+                    exe_dir = exe_dir.Replace(opdexe.SafeFileName.ToString(), "" );
+                }
+
+
+                string test = "/C " + @"""" +@"""" + opdexe.FileName.ToString() + @"""" + " -i " + @""""+textBox1.Text+"\"";
 
 
                 if(dlcoff == true)
@@ -101,7 +112,7 @@ namespace SMTV_SaveUtil_GUI
                     dlcon = false;
                 }
 
-                Process.Start("cmd.exe", test);
+                Process.Start("cmd.exe", @test);
 
                 MessageBox.Show("Task Finished. Please check output file", "Success");
             }
@@ -122,7 +133,7 @@ namespace SMTV_SaveUtil_GUI
 
             try
             {
-                string test = @"/C "+ @""""+exe_dir+" -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
+                string test = @"/C "+ @""""+@""""+exe_dir+@""""+" -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
 
 
                 if (dlcoff == true)
@@ -189,6 +200,7 @@ namespace SMTV_SaveUtil_GUI
             button2.Enabled = false;
             selectOutputToolStripMenuItem.Enabled = false;
             additionalOptionsToolStripMenuItem.Enabled = false;
+            selectOutputeToolStripMenuItem.Enabled = false;
 
         }
 
@@ -211,11 +223,11 @@ namespace SMTV_SaveUtil_GUI
 
         private void selectSaveUtilEXEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opd = new OpenFileDialog();
-
-            if(opd.ShowDialog() == DialogResult.OK)
+            
+            if (opdexe.ShowDialog() == DialogResult.OK)
             {
-                exe_dir = opd.FileName.ToString();
+                exe_dir = opdexe.FileName;
+                selectOutputeToolStripMenuItem.Enabled = true;
             }
         }
 
