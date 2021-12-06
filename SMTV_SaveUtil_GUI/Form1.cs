@@ -70,15 +70,15 @@ namespace SMTV_SaveUtil_GUI
                 strCmdText = "/C " + "@"+ Environment.CurrentDirectory + "\\req\\smtv.saveutil.exe -i " + textBox1.Text;
 
 
-                if (exe_dir.Contains(opdexe.SafeFileName))
-                {
-                    
+                //if (exe_dir.Contains(opdexe.SafeFileName))
+                //{
+                //    
+                //
+                //    exe_dir = exe_dir.Replace(opdexe.SafeFileName.ToString(), "" );
+                //}
 
-                    exe_dir = exe_dir.Replace(opdexe.SafeFileName.ToString(), "" );
-                }
 
-
-                string test = "/C " + @"""" +@"""" + opdexe.FileName.ToString() + @"""" + " -i " + @""""+textBox1.Text+"\"";
+                string test = "/K " + @"""" +@"""" + opdexe.FileName.ToString() + @"""" + " -i " + @""""+textBox1.Text+"\"";
 
 
                 if(dlcoff == true)
@@ -112,7 +112,9 @@ namespace SMTV_SaveUtil_GUI
                     dlcon = false;
                 }
 
-                Process.Start("cmd.exe", @test);
+                //Process.Start("cmd.exe", @test);
+
+                SaveCrypt.CryptFile(textBox1.Text);
 
                 MessageBox.Show("Task Finished. Please check output file", "Success");
             }
@@ -133,7 +135,7 @@ namespace SMTV_SaveUtil_GUI
 
             try
             {
-                string test = @"/C "+ @""""+@""""+exe_dir+@""""+" -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
+                string test = @"/K "+ @""""+@""""+exe_dir+@""""+" -i " + @""""+textBox1.Text+"\"" + " -o " + @""""+textBox2.Text+"\"";
 
 
                 if (dlcoff == true)
@@ -168,7 +170,8 @@ namespace SMTV_SaveUtil_GUI
                 }
 
 
-                Process.Start("cmd.exe", test);
+                //Process.Start("cmd.exe", test);
+                SaveCrypt.CryptFile(textBox1.Text, textBox2.Text);
 
                 MessageBox.Show("Task Finished. Please check output file", "Success");
             }
@@ -200,7 +203,7 @@ namespace SMTV_SaveUtil_GUI
             button2.Enabled = false;
             selectOutputToolStripMenuItem.Enabled = false;
             additionalOptionsToolStripMenuItem.Enabled = false;
-            selectOutputeToolStripMenuItem.Enabled = false;
+            //selectOutputeToolStripMenuItem.Enabled = false;
 
         }
 
@@ -219,16 +222,6 @@ namespace SMTV_SaveUtil_GUI
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
-        }
-
-        private void selectSaveUtilEXEToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            if (opdexe.ShowDialog() == DialogResult.OK)
-            {
-                exe_dir = opdexe.FileName;
-                selectOutputeToolStripMenuItem.Enabled = true;
-            }
         }
 
         private void setDLCStatusToolStripMenuItem_Click(object sender, EventArgs e)
